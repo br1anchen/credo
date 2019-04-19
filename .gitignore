@@ -21,3 +21,18 @@ setup.log
 
 # Merlin configuring file for Vim and Emacs
 .merlin
+
+# npm
+/node_modules/
+npm-debug.log
+
+# bucklescript
+lib
+*.bs.js
+.bsb.lock
+
+# parcel
+dist
+.cache
+
+.DS_Store
