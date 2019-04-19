@@ -35,4 +35,8 @@ lib
 dist
 .cache
 
+# esy
+_esy
+*.install
+
 .DS_Store

@@ -1,23 +1,25 @@
 {
-  "name": "credo",
+  "name": "credo-client",
   "version": "0.1.0",
-  "description": "ReasonML full-stack repo for service presentation",
+  "description": "ReasonReact client for church service presentation",
   "repository": "git@github.com:br1anchen/credo.git",
   "private": false,
+  "keywords": [
+    "ReasonML",
+    "ReasonReact"
+  ],
+  "author": "Brian Chen <brianchen8990@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "run-p watch-world serve-app",
-    "build": "run-s clean-world make-world build-app",
+    "build": "run-s clean-world clean-app make-world build-app",
     "make-world": "bsb -make-world",
     "watch-world": "bsb -make-world -w",
     "clean-world": "bsb -clean-world",
     "serve-app": "parcel src/client/index.html",
-    "build-app": "parcel build src/client/index.html"
+    "build-app": "parcel build src/client/index.html",
+    "clean-app": "rm -rf dist"
   },
-  "keywords": [
-    "ReasonML"
-  ],
-  "author": "Brian Chen <brianchen8990@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "react": "^16.8.1",
     "react-dom": "^16.8.1",

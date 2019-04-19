@@ -1,6 +1,6 @@
 # credo
 
-ReasonML full-stack repo for service presentation
+ReasonML full-stack repo for church service presentation
 
 ## Run Project with Server
 

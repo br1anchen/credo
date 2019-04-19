@@ -1,0 +1,5 @@
+(executable
+  (name main)
+  (public_name credo)
+  (libraries shared lwt cohttp cohttp-lwt-unix graphql-lwt yojson str)
+  (flags (:standard -w -9)))
