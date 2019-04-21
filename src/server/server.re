@@ -1,7 +1,5 @@
 open Lwt.Infix;
 
-module C = Cohttp_lwt_unix;
-
 module CServer = Cohttp_lwt_unix.Server;
 
 module Schema = Graphql_lwt.Schema;
@@ -16,7 +14,7 @@ let serveStatic = (base, path) => {
           (),
         );
       } else {
-        C.Server.respond_string(~status=`Not_found, ~body="", ());
+        CServer.respond_string(~status=`Not_found, ~body="", ());
       };
     } else {
       CServer.respond_file(~fname, ());
@@ -24,7 +22,7 @@ let serveStatic = (base, path) => {
   } else if (Sys.file_exists(fname ++ ".html")) {
     CServer.respond_file(~fname=fname ++ ".html", ());
   } else {
-    C.Server.respond_string(~status=`Not_found, ~body="", ());
+    CServer.respond_string(~status=`Not_found, ~body="", ());
   };
 };
 
@@ -66,16 +64,16 @@ let execute_request = (ctx, schema, _req, body) =>
         fun
         | Ok(`Response(data)) => {
             let body = Yojson.Basic.to_string(data);
-            C.Server.respond_string(~status=`OK, ~body, ());
+            CServer.respond_string(~status=`OK, ~body, ());
           }
         | Ok(`Stream(_)) =>
-          C.Server.respond_error(
+          CServer.respond_error(
             ~body="Subscriptions are not implemented by this server.",
             (),
           )
         | Error(err) => {
             let body = Yojson.Basic.to_string(err);
-            C.Server.respond_error(~body, ());
+            CServer.respond_error(~body, ());
           }
       );
     }
@@ -91,11 +89,11 @@ let mk_callback = (mk_context, schema, _conn, req: Cohttp.Request.t, body) => {
   | (`POST, ["graphql"]) =>
     execute_request(mk_context(req), schema, req, body)
   | (`GET, _) => serveStatic("./dist", req_path)
-  | _ => C.Server.respond_string(~status=`Not_found, ~body="", ())
+  | _ => CServer.respond_string(~status=`Not_found, ~body="", ())
   };
 };
 
 let start = (~port=8080, ~ctx, schema) => {
   let callback = mk_callback(ctx, schema);
-  C.Server.create(~mode=`TCP(`Port(port)), C.Server.make(~callback, ()));
+  CServer.create(~mode=`TCP(`Port(port)), CServer.make(~callback, ()));
 };
