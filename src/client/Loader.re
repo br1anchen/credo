@@ -90,7 +90,7 @@ module F = (Config: Config) => {
            setStatus(_ => Error("Couldn't get todos")) |> Js.Promise.resolve
          )
       |> ignore;
-      Some(ignore);
+      None;
     });
 
     switch (status) {
