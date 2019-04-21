@@ -1,12 +1,6 @@
-module Schedule = {
-  type song = {
-    id: int,
-    name: string,
-    lang: string,
-    lyrics: array(string),
-  };
-  type schedule = array(song);
+open Shared.Types;
 
+module Schedule = {
   module ScheduleQuery = [%graphql
     {|
       {

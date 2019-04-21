@@ -1,6 +1,6 @@
 open Shared.Types;
 
-let schedule: list(song) = [
+let schedule: scheduleDB = [
   {
     id: 1,
     name: "Open The Eyes Of My Heart",

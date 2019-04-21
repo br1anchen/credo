@@ -1,10 +1,14 @@
 module Types = {
-  type song = {
+  type songEntity('lyrics) = {
     id: int,
     name: string,
     lang: string,
-    lyrics: list(string),
-  };
+    lyrics: 'lyrics,
+  }
 
-  type schedule = list(song);
+  type song = songEntity(array(string));
+  type songDB = songEntity(list(string));
+
+  type schedule = array(song);
+  type scheduleDB = list(songDB);
 };
