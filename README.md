@@ -1,6 +1,7 @@
 # credo
 
-ReasonML full-stack repo for church service presentation
+ReasonML full-stack repo for church service presentation.
+Based on nice [repo](https://github.com/anmonteiro/reason-graphql-fullstack) from [@anmonteiro](https://github.com/anmonteiro)
 
 ## Run front-end with Server
 
