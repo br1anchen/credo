@@ -39,4 +39,8 @@ dist
 _esy
 *.install
 
+# graphql_ppx
+.graphql_ppx_cache
+
 .DS_Store
+*.code-workspace

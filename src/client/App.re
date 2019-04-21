@@ -1,5 +1,4 @@
+open Schedule;
+
 [@react.component]
-let make = (()) =>
-  <div>
-    <Gretting greeting="Hello World" />
-  </div>;
+let make = () => <div> <GraphQLSchedule /> </div>;
